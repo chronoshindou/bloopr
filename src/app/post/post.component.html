@@ -1,0 +1,22 @@
+<h2 class="container">Post List</h2>
+
+<!-- <div>
+  <button (click)="add()">
+    Add
+  </button>
+</div> -->
+<div class="container">
+  <div class="row align-self-center" 
+  style="display: flex;justify-content: center;" *ngFor="let p of posts; let i=index;">
+      <mdb-card cascade="true"
+      class="posts"
+      wider="true">
+        <mdb-card-img src="{{p.imageUrl}}"></mdb-card-img>
+          <mdb-card-body>
+           <mdb-card-title>{{p.title}}</mdb-card-title>
+           <mdb-card-text>{{p.post_content}}</mdb-card-text>
+          </mdb-card-body>
+           <mdb-card-footer>{{p.who}}</mdb-card-footer>
+      </mdb-card>
+  </div>
+</div>
