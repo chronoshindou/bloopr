@@ -1,22 +1,66 @@
-<h2 class="container">Post List</h2>
+<!--Main Navigation-->
+<!-- <header>
+  <nav class="navbar fixed-top navbar-expand-lg scrolling-navbar navbar-dark">
+    <a class="navbar-brand" href="#"><strong>BloopR</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Opinions</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav nav-flex-icons">
+        <li class="nav-item">
+          <a class="nav-link"><i class="fab fa-facebook-f"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"><i class="fab fa-twitter"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"><i class="fab fa-instagram"></i></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
 
-<!-- <div>
-  <button (click)="add()">
-    Add
-  </button>
-</div> -->
-<div class="container">
-  <div class="row align-self-center" 
-  style="display: flex;justify-content: center;" *ngFor="let p of posts; let i=index;">
-      <mdb-card cascade="true"
-      class="posts"
-      wider="true">
-        <mdb-card-img src="{{p.imageUrl}}"></mdb-card-img>
-          <mdb-card-body>
-           <mdb-card-title>{{p.title}}</mdb-card-title>
-           <mdb-card-text>{{p.post_content}}</mdb-card-text>
-          </mdb-card-body>
-           <mdb-card-footer>{{p.who}}</mdb-card-footer>
-      </mdb-card>
-  </div>
-</div>
+</header> -->
+<!--Main Navigation-->
+<!-- <div class="div_body"> -->
+  <h2 class="container">Post List</h2>
+
+    <!-- <div class="row align-self-center" style="display: flex;justify-content: center;" > -->
+      <mat-card class="example-card" *ngFor="let p of posts; let i=index;" (click)="openDetail(p)" [routerLink]="post_id">
+        <mat-card-header>
+            <mat-card-title>{{p.title}}</mat-card-title>
+            <mat-card-subtitle>{{p.who}}</mat-card-subtitle>
+          </mat-card-header>
+        
+        <mat-card-content>
+          <div class="image-window">
+            <div *ngIf="p.imageUrl" >
+                <img mat-card-image *ngIf="p.imageUrl" src="{{p.imageUrl}}">
+            </div>
+                <div *ngIf="!p.imageUrl"><h4>{{p.post_content}}</h4></div>
+                
+              </div>
+          <hr>
+          <!--  -->
+          <mat-card-actions>
+            2019-02-11 2 Comments 3 Likes
+          </mat-card-actions>
+
+        </mat-card-content>
+      </mat-card>
+    <!-- </div> -->

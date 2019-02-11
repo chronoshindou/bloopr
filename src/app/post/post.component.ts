@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RestService } from '../rest.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import { Post } from '../models/post.model';
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
@@ -9,7 +11,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PostComponent implements OnInit {
 
-  posts:any = [];
+  posts:Post;
+  post_id: string;
 
   constructor(public rest:RestService, 
     private route: ActivatedRoute, 
@@ -20,11 +23,17 @@ export class PostComponent implements OnInit {
   }
 
   getPosts() {
-    this.posts = [];
-    this.rest.getPosts().subscribe((data: {}) => {
-      console.log(data);
-      this.posts = data;
+    // this.posts = [];
+    // data: {}
+    this.rest.getPosts().subscribe((posts: Post) => {
+      console.log(posts);
+      this.posts = posts;
     });
+  }
+
+  openDetail(post: Post){
+    this.post_id = "/detail/"+post._id;
+    // console.log(post._id)
   }
 
 }
